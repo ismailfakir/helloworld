@@ -1,13 +1,13 @@
 {
   "name": "helloworld",
   "version": "1.0.0",
-  "description": "",
+  "description": "A hellow world nodejs webserver",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "ismail fakir",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
