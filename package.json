@@ -2,14 +2,19 @@
   "name": "helloworld",
   "version": "1.0.0",
   "description": "A hellow world nodejs webserver",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node spec"
   },
   "keywords": [],
   "author": "ismail fakir",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jasmine-node": "^3.0.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "jasmine": "^3.6.4"
   }
 }

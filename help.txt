@@ -1,6 +1,6 @@
 #https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 #run docker image
-$ docker run -p 8090:8080 ismail/helloworld
+$ docker run -d -p 8090:8080 ismail/helloworld
 
 #List docker image
 $ docker ps -a
@@ -10,6 +10,9 @@ $ docker exec -it d3521d9da1bb /bin/bash
 
 #stop docker image
 $ docker container stop d3521d9da1bb
+
+# Removing Docker Images
+$ docker rmi IMAGE_ID
 
 #create dockerhub repository: helloworld
 docker push ismailfakir/helloworld:tagname
@@ -26,5 +29,30 @@ $ docker push ismailfakir/helloworld:firsttry
 #pull the image from docker hub
 docker pull ismailfakir/helloworld
 
+#build jenkins pipeline
+https://medium.com/@gustavo.guss/jenkins-starting-with-pipeline-doing-a-node-js-test-72c6057b67d4
 
 
+# test
+https://jasmine.github.io/setup/nodejs.html
+
+# Jasmine
+$ npm install --save-dev jasmine
+$ npx jasmine init
+$ jasmine init
+
+
+https://blog.harveydelaney.com/jenkins-build-test-deploy-node-app/
+https://semaphoreci.com/community/tutorials/getting-started-with-node-js-and-jasmine
+
+#add dependency
+npm install --save-dev node-jasmine
+npm install --save request
+Hello BD Programmers GBG!
+
+#kubernates
+$ minikube kubectl -- apply -f deploy.yaml
+$ minikube kubectl -- get pods
+$ minikube kubectl -- get services
+$ minikube kubectl -- get nodes --output wide
+$ minikube service my-app-service
