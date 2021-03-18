@@ -4,6 +4,7 @@
   "description": "A hellow world nodejs webserver",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "jasmine-node spec"
   },
   "keywords": [],
