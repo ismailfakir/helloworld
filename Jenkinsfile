@@ -1,5 +1,4 @@
 pipeline {
-    def app
     agent any
     
     tools {nodejs "node"}
@@ -22,14 +21,13 @@ pipeline {
         }
 
         stage('Build image') {
-  
-            app = docker.build("ismailfakir/helloworld")
-        }
+            steps {
+                echo 'Starting to build docker image'
 
-        stage('Test image') {
-  
-            app.inside {
-                sh 'echo "Tests passed"'
+                script {
+                    def customImage = docker.build("ismailfakir/helloworld:${env.BUILD_ID}")
+                    customImage.push()
+                }
             }
         }
     }
