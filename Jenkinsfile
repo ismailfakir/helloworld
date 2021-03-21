@@ -1,4 +1,5 @@
-pipeline {
+node {
+    def app
     agent any
     
     tools {nodejs "node"}
