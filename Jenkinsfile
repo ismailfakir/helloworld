@@ -1,5 +1,11 @@
-node {
-    def app
+pipeline {
+
+    environment {
+        imagename = "ismailfakir/helloworld"
+        registryCredential = 'ismail-dockerhub'
+        dockerImage = ''
+    }
+
     agent any
     
     tools {nodejs "node"}
@@ -21,14 +27,32 @@ node {
             }
         }
 
-        stage('Build image') {
+        stage('Building image') {
             steps {
                 echo 'Starting to build docker image'
 
                 script {
-                    def customImage = docker.build("ismailfakir/helloworld:${env.BUILD_ID}")
-                    customImage.push()
+                    dockerImage = docker.build("ismailfakir/helloworld:${env.BUILD_ID}")
                 }
+            }
+        }
+
+        stage('Deploy Image') {
+        steps {
+            script {
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push("$BUILD_NUMBER")
+                    dockerImage.push('latest')
+                    }
+                }
+            }
+        }
+        
+        stage('Remove Unused docker image') {
+            steps{
+                sh "docker rmi $imagename:$BUILD_NUMBER"
+                sh "docker rmi $imagename:latest"
+
             }
         }
     }
